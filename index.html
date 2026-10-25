@@ -27,6 +27,6 @@ async function derive(pw){const p=await payload();const base=await crypto.subtle
  try{const k=await kget();if(k){await run(k);return}}catch(e){}
  document.getElementById("lock").hidden=false;
  document.getElementById("f").onsubmit=async e=>{e.preventDefault();const m=document.getElementById("msg");m.textContent="Unlocking…";
-  try{const k=await derive(document.getElementById("pw").value);await run(k);await kput(k)}catch(e){m.textContent="Wrong password"}};})();
+  try{const k=await derive(document.getElementById("pw").value.trim());await run(k);await kput(k)}catch(e){m.textContent="Wrong password"}};})();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 </script></body></html>
